@@ -2,7 +2,16 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group" *ngIf="crud_operation.is_visible">
-                <!-- Formulario de edición -->
+                <label>Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="current_clien.nombre">
+                <label>Apellido</label>
+                <input type="text" class="form-control" [(ngModel)]="current_clien.apellido">
+                <label>Nacimiento</label>
+                <input type="date" class="form-control" [(ngModel)]="current_clien.nacimiento">
+                <label></label>
+                <input type="number" class="form-control" [(ngModel)]="current_clien.edad">
+                <button class="btn btn-primary m-2" (click)="save()">Guardar</button>
+                <button class="btn btn-danger" (click)="crud_operation.is_visible = false">Cancelar</button>
             </div>
 
             <div class="panel-body">
@@ -29,10 +38,11 @@
                                 <td>{{row.edad}}</td>
                                 <td class="text-right">
                                     <div *ngIf="!row.confirm">
-                                        <button class="btn btn-danger" (click)="row.confirm = true">Eliminar</button>
+                                        <button class="btn btn-danger mgr" (click)="row.confirm = true">Eliminar</button>
+                                        <button class="btn btn-warning" (click)="edit(row)">Editar</button>
                                     </div>
                                     <div *ngIf="row.confirm">
-                                        <button class="btn btn-success" style="margin-right: 10px;" (click)="delete(row.id)">Confirmar</button>
+                                        <button class="btn btn-success mgr" (click)="delete(row.id)">Confirmar</button>
                                         <button class="btn btn-danger" (click)="row.confirm = false">Cancelar</button>
                                     </div>
                                 </td>
