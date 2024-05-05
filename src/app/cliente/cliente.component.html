@@ -1,16 +1,36 @@
+<div class="form-group" *ngIf="crud_operation.is_visible">
+    <label>Nombre</label>
+    <input type="text" class="form-control" [(ngModel)]="current_clien.nombre">
+    <label>Apellido</label>
+    <input type="text" class="form-control" [(ngModel)]="current_clien.apellido">
+    <label>Nacimiento</label>
+    <input type="date" class="form-control" [(ngModel)]="current_clien.nacimiento">
+    <label></label>
+    <input type="number" class="form-control" [(ngModel)]="current_clien.edad">
+    <button class="btn btn-primary m-2" (click)="save()">Guardar</button>
+    <button class="btn btn-danger" (click)="crud_operation.is_visible = false">Cancelar</button>
+</div>
+
 <div class="panel-body">
-    <table class="table table-striped table-over">
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Nacimiento</th>
-            <th>Edad</th>
-        </tr>
-        <tr *ngFor="let row of data">
-            <td>{{row.nombre}}</td>
-            <td>{{row.apellido}}</td>
-            <td>{{row.nacimiento}}</td>
-            <td>{{row.edad}}</td>
-        </tr>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Nacimiento</th>
+                <th>Edad</th>
+                <th>
+                    <button class="btn btn-success" (click)="new()">Nuevo</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of data">
+                <td>{{row.nombre}}</td>
+                <td>{{row.apellido}}</td>
+                <td>{{row.nacimiento}}</td>
+                <td>{{row.edad}}</td>
+            </tr>
+        </tbody>
     </table>
 </div>

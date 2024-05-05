@@ -18,7 +18,6 @@ export class ClienteComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.service.read().subscribe(res => {
       this.data = res;
       this.current_clien = new Cliente();
@@ -34,18 +33,23 @@ export class ClienteComponent implements OnInit {
   save() {
     if (this.crud_operation.is_new) {
       this.service.insert(this.current_clien).subscribe(res => {
-        this.current_clien = new Cliente();
+        this.current_clien = new Cliente(); // Limpiar el formulario
         this.crud_operation.is_visible = false;
-        this.ngOnInit();
+        this.ngOnInit(); // Recargar los datos después de la inserción
+      }, error => {
+        console.error("Error al insertar el cliente:", error);
       });
-      return;
+    } else {
+      this.service.update(this.current_clien).subscribe(res => {
+        this.current_clien = new Cliente(); // Limpiar el formulario
+        this.crud_operation.is_visible = false;
+        this.ngOnInit(); // Recargar los datos después de la actualización
+      }, error => {
+        console.error("Error al actualizar el cliente:", error);
+      });
     }
-    this.service.update(this.current_clien).subscribe(res => {
-      this.current_clien = new Cliente();
-      this.crud_operation.is_visible = false;
-      this.ngOnInit();
-    });
   }
+  
 
   edit(row: any) {
     this.crud_operation.is_visible = true;
