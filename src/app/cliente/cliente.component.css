@@ -1,3 +1,13 @@
 .mgr {
     margin-right: 10px;
 }
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+    .b-mobile {
+        margin-bottom: 10px;
+    }
+    .w-mobile {
+        width: 95%;
+    }
+}

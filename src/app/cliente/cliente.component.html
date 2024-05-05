@@ -8,8 +8,8 @@
                 <input type="text" class="form-control" [(ngModel)]="current_clien.apellido">
                 <label>Nacimiento</label>
                 <input type="date" class="form-control" [(ngModel)]="current_clien.nacimiento">
-                <label></label>
-                <input type="number" class="form-control" [(ngModel)]="current_clien.edad">
+                <label>Edad</label>
+                <input type="number" class="form-control mb-2" [(ngModel)]="current_clien.edad">
                 <button class="btn btn-primary m-2" (click)="save()">Guardar</button>
                 <button class="btn btn-danger" (click)="crud_operation.is_visible = false">Cancelar</button>
             </div>
@@ -25,7 +25,7 @@
                                 <th>Nacimiento</th>
                                 <th>Edad</th>
                                 <th class="text-right">
-                                    <button class="btn btn-success" (click)="new()">Nuevo</button>
+                                    <button class="btn btn-success w-mobile" (click)="new()">Nuevo</button>
                                 </th>
                             </tr>
                         </thead>
@@ -38,12 +38,12 @@
                                 <td>{{row.edad}}</td>
                                 <td class="text-right">
                                     <div *ngIf="!row.confirm">
-                                        <button class="btn btn-danger mgr" (click)="row.confirm = true">Eliminar</button>
-                                        <button class="btn btn-warning" (click)="edit(row)">Editar</button>
+                                        <button class="btn btn-danger mgr b-mobile w-mobile" (click)="row.confirm = true">Eliminar</button>
+                                        <button class="btn btn-warning w-mobile" (click)="edit(row)">Editar</button>
                                     </div>
                                     <div *ngIf="row.confirm">
-                                        <button class="btn btn-success mgr" (click)="delete(row.id)">Confirmar</button>
-                                        <button class="btn btn-danger" (click)="row.confirm = false">Cancelar</button>
+                                        <button class="btn btn-success b-mobile w-mobile mgr" (click)="delete(row.id)">Confirmar</button>
+                                        <button class="btn btn-danger w-mobile" (click)="row.confirm = false">Cancelar</button>
                                     </div>
                                 </td>
                             </tr>
