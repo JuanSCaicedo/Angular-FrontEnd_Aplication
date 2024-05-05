@@ -2,7 +2,7 @@ export class Cliente {
     id!:number;
     nombre!:string;
     apellido!:string;
-    nacimento!: Date;
+    nacimiento!: Date;
     edad!: number
 
     constructor() {

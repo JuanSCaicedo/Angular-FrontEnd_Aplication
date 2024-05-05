@@ -18,8 +18,9 @@ export class ClienteComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.service.read().subscribe(res => {
-      this.data = res.json();
+      this.data = res;
       this.current_clien = new Cliente();
     });
   }

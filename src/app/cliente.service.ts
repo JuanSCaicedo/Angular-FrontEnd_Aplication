@@ -9,21 +9,21 @@ export class ClienteService {
 
   data!: Cliente[];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http:HttpClient) { }
 
   read() {
-    return this.httpClient.get<any>('http://localhost:8000/clientes');
+    return this.http.get<any>('http://localhost:8000/clientes');
   }
 
   insert(data: Cliente) {
-    return this.httpClient.post<any>('http://localhost:8000/clientes', data);
+    return this.http.post<any>('http://localhost:8000/clientes', data);
   }
 
   update(data: Cliente) {
-    return this.httpClient.put<any>('http://localhost:8000/clientes/' + data.id, data);
+    return this.http.put<any>('http://localhost:8000/clientes/' + data.id, data);
   }
 
   delete(id:number) {
-    return this.httpClient.delete<any>('http://localhost:8000/clientes/' + id);
+    return this.http.delete<any>('http://localhost:8000/clientes/' + id);
   }
 }
