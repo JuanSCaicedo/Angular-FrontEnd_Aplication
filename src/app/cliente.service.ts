@@ -11,9 +11,9 @@ export class ClienteService {
 
   constructor(private http:HttpClient) { }
 
-  read() {
-    return this.http.get<any>('http://localhost:8000/clientes');
-  }
+  read(query: string = '') {
+    return this.http.get<any>('http://localhost:8000/clientes', { params: { buscar: query } });
+  }  
 
   insert(data: Cliente) {
     return this.http.post<any>('http://localhost:8000/clientes', data);

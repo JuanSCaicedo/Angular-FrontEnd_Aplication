@@ -11,6 +11,7 @@ export class ClienteComponent implements OnInit {
 
   data!: Cliente[];
   current_clien!: Cliente;
+  query!: string;
   crud_operation = { is_new: false, is_visible: false }
 
   constructor(private service: ClienteService) {
@@ -18,10 +19,16 @@ export class ClienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.read().subscribe(res => {
+    this.service.read(this.query).subscribe(res => {
       this.data = res;
       this.current_clien = new Cliente();
     });
+  }
+
+  onSearchChange() {
+    if (!this.query) {
+      this.ngOnInit();
+    }
   }
 
   new() {
