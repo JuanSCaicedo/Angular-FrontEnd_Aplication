@@ -1,0 +1,17 @@
+/* Estilos para el botón flotante de WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.whatsapp-button img {
+    width: 60px;
+    /* Ajusta el ancho de la imagen según tus preferencias */
+    height: auto;
+    /* La altura se ajustará automáticamente para mantener la proporción */
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    /* Agrega sombra al botón */
+}
