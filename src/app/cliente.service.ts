@@ -12,7 +12,7 @@ export class ClienteService {
   constructor(private http:HttpClient) { }
 
   read(query: string = '', page: number = 1) {
-    return this.http.get<any>('http://localhost:8000/clientes', {
+    return this.http.get<any>('https://backend-laravel.juandevops.com/clientes', {
       params: {
         buscar: query,
         page: page.toString()
@@ -21,14 +21,14 @@ export class ClienteService {
   }
 
   insert(data: Cliente) {
-    return this.http.post<any>('http://localhost:8000/clientes', data);
+    return this.http.post<any>('https://backend-laravel.juandevops.com/clientes', data);
   }
 
   update(data: Cliente) {
-    return this.http.put<any>('http://localhost:8000/clientes/' + data.id, data);
+    return this.http.put<any>('https://backend-laravel.juandevops.com/clientes/' + data.id, data);
   }
 
   delete(id:number) {
-    return this.http.delete<any>('http://localhost:8000/clientes/' + id);
+    return this.http.delete<any>('https://backend-laravel.juandevops.com/clientes/' + id);
   }
 }
