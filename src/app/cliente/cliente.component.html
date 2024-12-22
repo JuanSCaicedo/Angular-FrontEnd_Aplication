@@ -58,6 +58,13 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- Paginador -->
+                    <div class="d-flex justify-content-center">
+                        <ngb-pagination [collectionSize]="totalItems" [(page)]="currentPage" [pageSize]="10"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"
+                            [maxSize]="5"></ngb-pagination>
+                    </div>
                 </div>
             </div>
 

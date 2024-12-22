@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ClienteService } from './cliente.service';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbPaginationModule
   ],
   providers: [ClienteService],
   bootstrap: [AppComponent]

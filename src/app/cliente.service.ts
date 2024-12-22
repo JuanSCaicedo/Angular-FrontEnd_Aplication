@@ -11,19 +11,24 @@ export class ClienteService {
 
   constructor(private http:HttpClient) { }
 
-  read(query: string = '') {
-    return this.http.get<any>('http://backen_aplication.juancaicedodevops.xyz/clientes', { params: { buscar: query } });
-  }  
+  read(query: string = '', page: number = 1) {
+    return this.http.get<any>('http://localhost:8000/clientes', {
+      params: {
+        buscar: query,
+        page: page.toString()
+      }
+    });
+  }
 
   insert(data: Cliente) {
-    return this.http.post<any>('http://backen_aplication.juancaicedodevops.xyz/clientes', data);
+    return this.http.post<any>('http://localhost:8000/clientes', data);
   }
 
   update(data: Cliente) {
-    return this.http.put<any>('http://backen_aplication.juancaicedodevops.xyz/clientes/' + data.id, data);
+    return this.http.put<any>('http://localhost:8000/clientes/' + data.id, data);
   }
 
   delete(id:number) {
-    return this.http.delete<any>('http://backen_aplication.juancaicedodevops.xyz/clientes/' + id);
+    return this.http.delete<any>('http://localhost:8000/clientes/' + id);
   }
 }

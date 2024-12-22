@@ -14,15 +14,32 @@ export class ClienteComponent implements OnInit {
   query!: string;
   crud_operation = { is_new: false, is_visible: false }
 
+  currentPage = 1;
+  totalPages = 0;
+  totalItems = 0;
+
   constructor(private service: ClienteService) {
-    this.data = [];
+    this.current_clien = new Cliente();
   }
 
   ngOnInit() {
-    this.service.read(this.query).subscribe(res => {
-      this.data = res;
-      this.current_clien = new Cliente();
+    this.loadPage(1);
+  }
+
+  loadPage(page: number) {
+    this.service.read(this.query, page).subscribe(response => {
+      // Asumiendo que el backend devuelve un objeto con esta estructura
+      this.data = response.data;
+      this.totalItems = response.total;
+      this.currentPage = response.current_page;
+      // Si el backend usa Laravel, estos datos vendrán en la respuesta
     });
+  }
+
+  // Método para manejar la búsqueda
+  search() {
+    this.currentPage = 1; // Reset a la primera página cuando se busca
+    this.loadPage(1);
   }
 
   onSearchChange() {
